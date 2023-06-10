@@ -1,13 +1,11 @@
-use yew::prelude::*;
 use yew::html;
+use yew::prelude::*;
 
 //Create the main app that will load all other Components
-pub struct App {
-}
+pub struct App {}
 
 //Message enum that is used for managing the life cycle of Components
-pub enum Msg {
-}
+pub enum Msg {}
 
 //Implement the Component interface
 impl Component for App {
@@ -16,8 +14,7 @@ impl Component for App {
 
     //Create a new App
     fn create(_ctx: &Context<Self>) -> Self {
-        App {
-        }
+        App {}
     }
 
     fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
@@ -26,12 +23,22 @@ impl Component for App {
 
     fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div class="justify-content-center m-5">
-                <div class="container-fluid g-0" style="background-image: url('/data/images/banner-background.jpg'); height:400px;background-repeat:no-repeat;border-radius:200px;"></div>
-              <p>{"Hello"}</p>
+            <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <img src="/data/images/banner-background.jpg" alt="" />
+                    <span class="fs-4">{"Simple header"}</span>
+                </a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">{"Home"}</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">{"Features"}</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">{"Pricing"}</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">{"FAQs"}</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">{"About"}</a></li>
+                </ul>
+                
             </div>
-            
-        }
+
+          }
     }
 }
 
