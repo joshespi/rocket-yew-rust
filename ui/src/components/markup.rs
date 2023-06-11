@@ -6,6 +6,7 @@ use yew::virtual_dom::vnode::VNode;
 
 use reqwasm::http::Request;
 
+
 use crate::utils::fetchstates::{FetchError, FetchState, FetchStateMsg};
 
 #[derive(Clone, Debug, Eq, PartialEq, Properties)]
@@ -27,8 +28,8 @@ impl Component for Markup {
             markup: FetchState::NotFetching,
         }
     }
-
-    fn changed(&mut self, ctx: &Context<Self>) -> bool {
+    fn changed(&mut self, ctx: &Context<Self>, _props: &<Self as yew::Component>::Properties) -> bool {
+   
         ctx.link().send_message(FetchStateMsg::GetData);
         true
     }
