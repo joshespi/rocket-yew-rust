@@ -1,4 +1,6 @@
 mod pages;
+mod components;
+mod utils;
 
 use pages::home::Home;
 use pages::not_found::NotFound;
