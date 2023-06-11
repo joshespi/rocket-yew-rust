@@ -2,6 +2,13 @@ use rocket::fs::NamedFile;
 use rocket::response::status::NotFound;
 use std::path::PathBuf;
 
+//Import the data structure we just made
+use common::Markup;
+//Used to read files
+use std::fs;
+//Json for sending to the front end
+use rocket::serde::json::Json;
+
 
 //Import the rocket macros
 #[macro_use]
@@ -32,7 +39,18 @@ async fn data(path: PathBuf) -> Result<NamedFile, NotFound<String>> {
         Err(_) => get_index().await,
     }
 }
-
+#[get("/markup/<path..>")]
+fn get_markup(path: PathBuf) -> Json<Markup> {
+    let path = PathBuf::from("data/markup/").join(path);
+    match fs::read_to_string(path) {
+        Ok(markup) => Json(Markup {
+            markup: String::from(markup),
+        }),
+        Err(e) => Json(Markup {
+            markup: String::from(format!("Error: {}", e)),
+        }),
+    }
+}
 // Return the index when the url is /
 #[get("/")]
 async fn index() -> Result<NamedFile, NotFound<String>> {
@@ -41,7 +59,7 @@ async fn index() -> Result<NamedFile, NotFound<String>> {
 
 #[launch]
 fn rocket() -> _ {
-    // You must mount the static_files route
     rocket::build()
         .mount("/", routes![index, static_files, data])
+        .mount("/api", routes![get_markup])
 }
