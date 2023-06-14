@@ -44,7 +44,7 @@ impl Component for App {
           <BrowserRouter>
               {self.view_nav(&ctx)}
             <main>
-                <Switch<Route> render={Switch::render(switch)} />
+                <Switch<Route> render={switch} />
             </main>
           </BrowserRouter>
 
@@ -112,7 +112,7 @@ pub enum Route {
     NotFound,
 }
 
-fn switch(routes: &Route) -> Html {
+fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => {
             html! { <Home /> }
@@ -128,5 +128,5 @@ pub fn main() {
     //Create the logger
     wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
     //Start the Yew framework
-    yew::start_app::<App>();
+   yew::Renderer::<App>::new().render();
 }

@@ -6,20 +6,21 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#Our common code library
-common = {path = "../common"}
-#The frontend framework we are going to use
-yew = "0.19.3"
-#Yew's routing framework for handling url on the frontend
-yew-router = "0.16.0"
-#Logging for Debugging
+# Our common code library
+common = { path = "../common" }
+# The frontend framework we are going to use
+yew = { version = "0.20.0", features = ["csr"] }
+# Yew's routing framework for handling URLs on the frontend
+yew-router = "0.17.0"
+# Logging for debugging
 wasm-logger = "0.2.0"
 log = "0.4.14"
-#A WebAssembly bindgen
+# A WebAssembly bindgen
 web-sys = "0.3.56"
-#A rust library that renders markup as HTML
+# A Rust library that renders markup as HTML
 pulldown-cmark = "0.9.1"
-#Reqwasm will be used to send request to the backend
-reqwasm = "0.4.0"
-#A rust serialization library for interacting data between the backend and frontend
+# Reqwest will be used to send requests to the backend
+reqwest = "0.11.18"
+# A Rust serialization library for interacting with data between the backend and frontend
 serde = { version = "1.0.133", features = ["derive"] }
+reqwasm = "0.5.0"
