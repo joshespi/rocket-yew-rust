@@ -3,6 +3,7 @@ mod pages;
 mod utils;
 
 use pages::home::Home;
+use pages::resume::Resume;
 use pages::not_found::NotFound;
 use yew::html;
 use yew::prelude::*;
@@ -127,6 +128,8 @@ impl App {
 pub enum Route {
     #[at("/")]
     Home,
+    #[at("/resume")]
+    Resume,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -136,6 +139,9 @@ fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => {
             html! { <Home /> }
+        }
+        Route::Resume => {
+            html! { <Resume /> }
         }
         _ => {
             html! { <NotFound /> }

@@ -57,9 +57,16 @@ async fn index() -> Result<NamedFile, NotFound<String>> {
     get_index().await
 }
 
+#[get("/resume")]
+async fn resume() -> Result<NamedFile, NotFound<String>> {
+    NamedFile::open("../ui/dist/index.html")
+        .await
+        .map_err(|e| NotFound(e.to_string()))
+}
+
 #[launch]
 fn rocket() -> _ {
     rocket::build()
-        .mount("/", routes![index, static_files, data])
+        .mount("/", routes![index, static_files, data, resume])
         .mount("/api", routes![get_markup])
 }
