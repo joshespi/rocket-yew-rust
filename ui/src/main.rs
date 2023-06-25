@@ -1,5 +1,5 @@
-mod pages;
 mod components;
+mod pages;
 mod utils;
 
 use pages::home::Home;
@@ -65,7 +65,9 @@ impl App {
             <nav class="navbar navbar-expand-lg p-2 sticky-top navbar-dark bg-dark">
 
                 <Link<Route> classes={classes!("navbar-brand")} to={Route::Home}>
-                    {"Rust Website"}
+
+                    <img src="/data/images/espi.jpg" alt="Espi Eth avatar" class="avatar" />
+                    {"I Am Josh Espinoza"}
                 </Link<Route>>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -83,17 +85,36 @@ impl App {
                         </li>
 
                         <li class="nav-item">
-                            <a href="https://github.com/nmharmon8/Rust_Rocket_Yew_Tutorial" class="nav-link">
-                            {"GitHubCode"}
+                            <a href="https://github.com/joshespi" class="nav-link">
+                            {"My Github"}
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="https://theadventuresofaliceandbob.com/" class="nav-link">
-                            {"Blog"}
+                            <a href="https://www.youtube.com/user/Joshespi" class="nav-link">
+                            {"My Youtube"}
                             </a>
                         </li>
-
+                        <li class="nav-item">
+                            <a href="https://twitter.com/The_Espi" class="nav-link">
+                            {"My Twitter"}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://espifam.com/referral-links/" class="nav-link">
+                            {"Referral Links"}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://espifam.com/contact-us/" class="nav-link">
+                            {"Contact Me"}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="resume/" class="nav-link">
+                            {"Resume"}
+                            </a>
+                        </li>
                     </ul>
 
                 </div>
@@ -101,7 +122,6 @@ impl App {
         }
     }
 }
-
 
 #[derive(Routable, PartialEq, Clone, Debug)]
 pub enum Route {
@@ -128,5 +148,5 @@ pub fn main() {
     //Create the logger
     wasm_logger::init(wasm_logger::Config::new(log::Level::Trace));
     //Start the Yew framework
-   yew::Renderer::<App>::new().render();
+    yew::Renderer::<App>::new().render();
 }

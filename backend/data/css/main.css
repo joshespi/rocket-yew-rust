@@ -1,1 +1,5 @@
-#mainHeader img {max-height: 75px; width: auto;}
+.avatar {
+    border-radius: 50%;
+    max-width: 40px;
+    margin-right: 1em;
+}
