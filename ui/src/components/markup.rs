@@ -6,14 +6,12 @@ use yew::virtual_dom::vnode::VNode;
 
 use reqwasm::http::Request;
 
-
 use crate::utils::fetchstates::{FetchError, FetchState, FetchStateMsg};
 
 #[derive(Clone, Debug, Eq, PartialEq, Properties)]
 pub struct Props {
     pub id: String,
 }
-
 
 pub struct Markup {
     markup: FetchState<common::Markup>,
@@ -28,8 +26,11 @@ impl Component for Markup {
             markup: FetchState::NotFetching,
         }
     }
-    fn changed(&mut self, ctx: &Context<Self>, _props: &<Self as yew::Component>::Properties) -> bool {
-   
+    fn changed(
+        &mut self,
+        ctx: &Context<Self>,
+        _props: &<Self as yew::Component>::Properties,
+    ) -> bool {
         ctx.link().send_message(FetchStateMsg::GetData);
         true
     }

@@ -1,11 +1,9 @@
 use serde::{Deserialize, Serialize};
 
-
 #[derive(Debug, Clone, PartialEq, Default, Deserialize, Serialize)]
 pub struct Markup {
     pub markup: String,
 }
-
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

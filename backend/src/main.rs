@@ -9,7 +9,6 @@ use std::fs;
 //Json for sending to the front end
 use rocket::serde::json::Json;
 
-
 //Import the rocket macros
 #[macro_use]
 extern crate rocket;
